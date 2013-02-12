@@ -5,7 +5,19 @@ gem 'rails', '3.2.11'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+group :test, :development do
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+  gem 'guard-rspec'
+  gem 'terminal-notifier-guard'
+  gem 'better_errors'
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
+end
 
 
 # Gems used only for assets and not required
@@ -18,6 +30,8 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'bcrypt-ruby'
+  gem 'bootstrap-sass'
 end
 
 gem 'jquery-rails'

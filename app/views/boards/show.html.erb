@@ -1,0 +1,18 @@
+<h1><%= @board.title %></h1>
+<% @board.posts.each do |post| %>
+  <%= link_to post_path(post) do %>
+    <div>
+      <%= post.title %>
+      <br>
+      Last update:
+      <% if post.replies.any? %>
+        <%= time_ago_in_words(post.replies.last.created_at) %>
+        ago by <%= post.replies.last.user.username %>
+      <% else %>
+        <%= time_ago_in_words(post.created_at) %>
+        ago by <%= post.user.username %>
+      <% end %>
+
+    </div>
+  <% end %>
+<% end %>
