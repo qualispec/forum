@@ -1,0 +1,20 @@
+<div class="reply">
+  <h1><%= @post.title %></h1>
+  <% if @post.user == current_user %>
+    <%= link_to "Edit", edit_post_path(@post) %>
+  <% end %>
+  <p><%= @post.user.username %></p>
+  <p><%= @post.body %></p>
+</div>
+<% @post.replies.each do |reply| %>
+  <hr>
+  <div class="reply">
+    <p><%= reply.user.username %></p>
+    <p><%= reply.body %></p>
+    <% if reply.user == current_user %>
+      <%= link_to "Edit", edit_reply_path(reply) %>
+    <% end %>
+  </div>
+<% end %>
+<%= link_to "Reply", new_post_reply_path(@post) %><br>
+<%= link_to "Back to Board", board_path(@post.board) %>

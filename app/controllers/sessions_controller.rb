@@ -9,12 +9,12 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by_username(params[:user][:username])
 
-    if @user
+    if @user && @user.authenticate(params[:user][:password])
       build_cookie(@user)
       redirect_to boards_path
     else
       flash.now[:error] = "Invalid Username/Password"
-      @session = @user
+      @session = @user ? @user : User.new
       render "new"
     end
   end

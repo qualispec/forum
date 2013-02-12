@@ -6,9 +6,13 @@ Forum::Application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
 
-  resources :boards, only: [:index, :show]
+  resources :boards, only: [:index, :show] do
+    resources :posts, only: [:new]
+  end
 
-  resources :posts
+  resources :posts do
+    resources :replies, only: [:new]
+  end
   resources :replies
 
   root to: "sessions#new"

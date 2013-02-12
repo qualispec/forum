@@ -16,7 +16,10 @@ describe "BoardPages" do
   end
 
   describe "Board show page" do
-    before { 20.times { Board.first.posts << FactoryGirl.create(:post) } }
+    before do
+      FactoryGirl.create(:user)
+      20.times { Board.first.posts << FactoryGirl.create(:post) }
+    end
 
     it "should have all the posts for that board" do
       visit board_path(Board.first)

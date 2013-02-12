@@ -5,4 +5,8 @@ class Board < ActiveRecord::Base
   has_many :posts
 
   validates_presence_of :title
+
+  def sorted_posts
+    posts.sort { |a,b| b.last_update <=> a.last_update}
+  end
 end
