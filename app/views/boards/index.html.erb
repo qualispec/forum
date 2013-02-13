@@ -1,9 +1,11 @@
-<h1>Boards</h1>
+<div class="titles">
+  <h1>Boards</h1>
+</div>
 
 <% @boards.each do |board| %>
   <%= link_to board_path(board) do %>
-    <div>
-      <h2><%= board.title %></h2>
+    <div class="entry">
+      <h1><%= board.title %></h1>
       <%= board.body %>
     </div>
   <% end %>

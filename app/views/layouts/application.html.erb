@@ -2,18 +2,33 @@
 <html>
 <head>
   <title>Forum</title>
+  <link href='http://fonts.googleapis.com/css?family=Antic+Slab|Snowburst+One|Text+Me+One' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<% if current_user %>
-  <h1><%= current_user.username %></h1>
-  <%= link_to "Logout", logout_path, method: :delete %>
-<% else %>
-  <%= link_to "Login", login_path %>
-<% end %>
+<div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand">Universe</a>
+    <ul class="nav pull-left">
+      <% Board.all.each do |board| %>
+        <li><%= link_to board.title, board_path(board) %></li>
+      <% end %>
+    </ul>
+    <% if current_user %>
+      <ul class="nav pull-right">
+        <li class="name">Hello, <%= current_user.username %></li>
+        <li><%= link_to "Logout", logout_path, method: :delete %></li>
+      </ul>
+    <% else %>
+      <ul class="nav pull-right">
+        <li><%= link_to "Login", login_path %></li>
+      </ul>
+    <% end %>
+  </div>
+</div>
 
 <%= yield %>
 

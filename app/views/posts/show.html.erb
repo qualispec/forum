@@ -7,7 +7,6 @@
   <p><%= @post.body %></p>
 </div>
 <% @post.replies.each do |reply| %>
-  <hr>
   <div class="reply">
     <p><%= reply.user.username %></p>
     <p><%= reply.body %></p>
@@ -16,5 +15,9 @@
     <% end %>
   </div>
 <% end %>
-<%= link_to "Reply", new_post_reply_path(@post) %><br>
-<%= link_to "Back to Board", board_path(@post.board) %>
+<%= link_to new_post_reply_path(@post) do %>
+  <div class="button">Reply</div>
+<% end %>
+<%= link_to board_path(@post.board) do %>
+  <div class="button">Back to Board</div>
+<% end %>

@@ -1,0 +1,85 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+ @import "bootstrap-styles";
+ @import "bootstrap";
+
+ $text-color-1: $navbarText;
+ $text-color-2: $navbarBackgroundHighlight;
+
+body {
+  background: image-url("debut_dark.png");
+  color: $text-color-1;
+  font-family: "Antic Slab", serif;
+  padding: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: blue;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.name {
+  margin-top: 10px;
+}
+
+.entry, .reply {
+  color: $text-color-1;
+  padding: 10px;
+  border: 1px solid rgba(0,0,0,0.0);
+  border-radius: 5px;
+  margin: 10px;
+
+  h1 {
+    font-size: 30px;
+    color: $text-color-2;
+    font-family: "Text Me One", sans-serif;
+  }
+}
+
+.reply {
+  border: 1px solid $text-color-1;
+}
+
+.entry {
+  border: 1px solid $text-color-1;
+
+  &:hover {
+    border: 1px solid $text-color-2;
+  }
+}
+
+.titles {
+  h1 {
+    font-size: 40px;
+    font-family: "Snowburst One", cursive;
+  }
+}
+
+.button {
+  border: 1px solid $text-color-1;
+  color: $text-color-1;
+  float: left;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 3px;
+
+  &:hover {
+    border: 1px solid $text-color-2;
+  }
+}

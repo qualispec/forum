@@ -30,4 +30,9 @@ class User < ActiveRecord::Base
   def check_password_confirmation?
     password
   end
+
+  def make_api_key
+    self.api_key ||= SecureRandom.base64
+    self.save!
+  end
 end

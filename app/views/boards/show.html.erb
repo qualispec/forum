@@ -1,11 +1,13 @@
-<h1><%= @board.title %></h1>
+<div class="titles">
+  <h1><%= @board.title %></h1>
+</div>
 <% if current_user %>
   <div><%= link_to "New post", new_board_post_path(@board) %></div>
 <% end %>
 <% @board.sorted_posts.each do |post| %>
   <%= link_to post_path(post) do %>
-    <div>
-      <%= post.title %>
+    <div class="entry">
+      <h1><%= post.title %></h1>
       <br>
       Last update:
       <% if post.replies.any? %>
@@ -18,4 +20,7 @@
 
     </div>
   <% end %>
+<% end %>
+<%= link_to boards_path do %>
+  <div class="button">Back to all boards</div>
 <% end %>

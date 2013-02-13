@@ -9,4 +9,14 @@ class Board < ActiveRecord::Base
   def sorted_posts
     posts.sort { |a,b| b.last_update <=> a.last_update}
   end
+
+  def as_json(options = {})
+    {
+      title: title,
+      body: body,
+      threads: posts
+    }
+    # options[:except] = [:created_at, :updated_at]
+    # super(options)
+  end
 end
